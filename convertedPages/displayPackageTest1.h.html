@@ -1,0 +1,171 @@
+<!Doctype html>
+<html>
+  <head>
+    <style>
+      body {
+        padding:15px 40px;
+        font-family: Consolas;
+        font-size: 1.25em;
+        font-weight: normal;
+      }
+    </style>
+  </head>
+  <body><pre><h3>process.h</h3>#pragma once
+#include &ltwindows.h&gt
+#include &ltstring&gt
+#include &ltiostream&gt
+#include &ltfunctional&gt
+
+using CBP = std::function&ltvoid(void)&gt;
+
+class Process
+{
+public:
+    Process();
+    virtual ~Process() {}
+    bool create(const std::string& path = "");
+    void title(const std::string& title);
+    void application(const std::string& app);
+    void commandLine(const std::string& cmdLine);
+    void registerCallback();
+    void setCallBackProcessing(CBP cbp);
+    void callback();
+    HANDLE getProcessHandle();
+private:
+    STARTUPINFO startInfo_;
+    PROCESS_INFORMATION procInfo_;
+    std::wstring title_;
+    std::wstring appName_;
+    std::wstring commandLine_;
+    static CBP cbp_;
+};
+
+CBP Process::cbp_ = []() { std::cout &lt&lt "\n  --- child process exited ---"; };
+
+//----&lt Process constructor &gt------------------------------------------
+/*
+* - This eventually will have more functionality
+*/
+inline Process::Process()
+{
+    GetStartupInfo(&startInfo_);
+    startInfo_.dwFlags = STARTF_USEPOSITION | STARTF_USESIZE;
+    startInfo_.dwX = 200;
+    startInfo_.dwY = 250;
+    startInfo_.dwYSize = 300;
+}
+//----&lt helper function to convert strings &gt---------------------------
+
+std::string wToS(const std::wstring& ws)
+{
+    std::string conv;
+    for (auto ch : ws)
+    {
+        conv.push_back(static_cast&ltchar&gt(ch));
+    }
+    return conv;
+}
+//----&lt helper function to convert strings &gt---------------------------
+
+std::wstring sToW(const std::string& s)
+{
+    std::wstring conv;
+    for (auto ch : s)
+    {
+        conv.push_back(static_cast&ltwchar_t&gt(ch));
+    }
+    return conv;
+}
+//----&lt define application new process runs &gt--------------------------
+
+inline void Process::application(const std::string& appName)
+{
+    appName_ = sToW(appName);
+}
+//----&lt define commandline passed to new application &gt-----------------
+
+inline void Process::commandLine(const std::string& cmdLine)
+{
+    commandLine_ = sToW(cmdLine);
+}
+//----&lt define title bar for console window &gt--------------------------
+/*
+* - applications like Notepad overwrite this string
+*/
+inline void Process::title(const std::string& title)
+{
+    title_ = sToW(title);
+    startInfo_.lpTitle = const_cast&ltLPWSTR&gt(title_.c_str());
+}
+//----&lt start new child process &gt--------------------------------------
+
+inline bool Process::create(const std::string& appName)
+{
+    std::wstring app;
+    if (appName.size() == 0)
+        app = appName_;
+    else
+    {
+        app = sToW(appName);
+    }
+    LPCTSTR applic = app.c_str();
+    LPTSTR cmdLine = const_cast&ltLPTSTR&gt(commandLine_.c_str());
+    LPSECURITY_ATTRIBUTES prosec = nullptr;
+    LPSECURITY_ATTRIBUTES thrdsec = nullptr;
+    BOOL inheritHandles = false;
+    DWORD createFlags = CREATE_NEW_CONSOLE;  // or CREATE_NO_WINDOW
+    LPVOID environment = nullptr;
+    LPCTSTR currentPath = nullptr;
+    LPSTARTUPINFO pStartInfo = &startInfo_;
+    LPPROCESS_INFORMATION pPrInfo = &procInfo_;
+
+    BOOL OK =
+        CreateProcess(
+            applic, cmdLine, prosec, thrdsec, inheritHandles,
+            createFlags, environment, currentPath, pStartInfo, pPrInfo
+        );
+    return OK;
+}
+
+///////////////////////////////////////////////////////////////////////
+// child process exit callback processing
+
+//----&lt provide new callable object for callback to invoke &gt-----------
+
+void Process::setCallBackProcessing(CBP cbp)
+{
+    cbp_ = cbp;
+}
+//----&lt function called when child process exists &gt--------------------
+
+void Process::callback()
+{
+    cbp_();
+}
+//----&lt Windows API declared function type for callbacks &gt-------------
+
+void CALLBACK WaitOrTimerCallback(_In_ PVOID lpParameter, _In_ BOOLEAN TimerOrWaitFired)
+{
+    Process p;
+    p.callback();
+    return;
+}
+//----&lt register callback with Windows API &gt---------------------------
+
+void Process::registerCallback()
+{
+    HANDLE hNewHandle;
+    HANDLE hProcHandle = procInfo_.hProcess;
+    RegisterWaitForSingleObject(
+        &hNewHandle, hProcHandle, WaitOrTimerCallback,
+        NULL, INFINITE, WT_EXECUTEONLYONCE
+    );
+}
+
+HANDLE Process::getProcessHandle()
+{
+    return procInfo_.hProcess;
+}
+</pre>  </body>
+</html>
+

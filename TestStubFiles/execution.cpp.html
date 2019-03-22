@@ -1,0 +1,100 @@
+<!Doctype html>
+<html>
+  <head>
+    <style>
+      body {
+        padding:15px 40px;
+        font-family: Consolas;
+        font-size: 1.25em;
+        font-weight: normal;
+      }
+    </style>
+  </head>
+  <body><pre><h3>execution.cpp</h3>/////////////////////////////////////////////////////
+// DirExplorer.cpp - Entry point for Package Demo
+// ver 1.2
+// Yuhan Liu, CSE687 Project 1, Spring 2019
+/////////////////////////////////////////////////////
+/*
+*  Package Responsibilities:
+* ---------------------------
+*  Demonstrate how to construct packages
+*
+*  Required Files:
+* -----------------
+*  Executive.cpp
+*  Convert.h, Convert.cpp
+*
+*  Maintenance History:
+* ----------------------
+*  ver 1.0 : 28 Jan 2019
+*  - first release
+*
+*  ver 1.1 : 30 Jan 2019
+*  - add convertHTML.h
+*  - add process.h
+*
+*  ver 1.2 : 31 Jan 2019
+*  - add regex judgement
+*/
+//#include &ltvector&gt
+//#include &ltiostream&gt
+//#include &ltfstream&gt
+//#include &ltsstream&gt
+//#include "../Display/Display.h"
+//#include "../convertHtml/convertHtml.h"
+//#include "../Utilities/codeUtilities.h"
+//#include "../DirExplorer/DirExplorer.h"
+//#include "FileSystem.h"
+//#include "../Test/process.h"
+//
+//int main(int argc, char *argv[])
+//{
+//    std::cout &lt&lt "\n  Demonstrating code pop-up in chrome" &lt&lt "\n ======================================" &lt&lt std::endl;
+//
+//    Utilities::ProcessCmdLine pcl(argc, argv);
+//    FileSystem::DirExplorerN fileNames(pcl.path());
+//    std::vector&ltstd::string&gt files = fileNames.findfile();
+//    int fileNumCount = 0;
+//    std::vector&ltstd::string&gt regexFiles;
+//
+//    for (auto f : files) {
+//        std::cout &lt&lt f &lt&lt std::endl;
+//    }
+//    std::cout &lt&lt std::endl;
+//    
+//    for (auto f : files)
+//    {
+//        std::ifstream fin;
+//        fin.open("../Test/" + f);
+//        std::stringstream buffer;
+//        buffer &lt&lt fin.rdbuf();
+//        std::string content(buffer.str());
+//        for (auto r : pcl.regexes())
+//        {
+//            if (std::regex_match(f, std::regex(r)))
+//            {
+//                std::cout &lt&lt f &lt&lt std::endl;
+//                fileNumCount++;
+//                regexFiles.push_back(f);
+//                std::ofstream fout;
+//                fout.open("../convertedPages/" + f + ".html");
+//                fout &lt&lt convertH(content, f) &lt&lt std::endl;
+//                fout.close();
+//            }
+//        }
+//        fin.close();
+//
+//    }
+//    if (fileNumCount == 0)
+//    {
+//        std::cout &lt&lt "no such file exists" &lt&lt std::endl;
+//    }
+//
+//	display(regexFiles);
+//	endDisplay();
+//    return 0;
+//}
+</pre>  </body>
+</html>
+

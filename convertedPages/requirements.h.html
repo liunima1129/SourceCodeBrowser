@@ -1,0 +1,85 @@
+<!Doctype html>
+<html>
+  <head>
+    <style>
+      body {
+        padding:15px 40px;
+        font-family: Consolas;
+        font-size: 1.25em;
+        font-weight: normal;
+      }
+    </style>
+  </head>
+  <body><pre><h3>requirements.h</h3>#pragma once
+////////////////////////////////////////////////////////////////////////////
+// requirements.h - print requirement demonstrations on the console       //
+// ver 1.0                                                                //
+// Language:    C++, Visual Studio 2017                                   //
+// Application: Most Projects, CSE687 - Object Oriented Design            //
+// Author:      Yuhan Liu, CSE687 - Object Oriented Design, Spring 2019   //
+////////////////////////////////////////////////////////////////////////////
+/*
+* Package Operations:
+* -------------------
+* This package provides functions:
+* - showRequirements_1_4(std::vector&ltstd::string&gt regexfile)    Display the requirement 1-4 demonstrations on the console
+* - showRequirements_5_6()										Display the requirement 5, 6 demonstrations on the console
+* - showRequirements_7()										Display the requirement 7 demonstration on the console
+*
+* Build Process:
+* --------------
+* Required Files:
+*   requirements.h
+*   execution.cpp
+*
+* Maintenance History:
+* --------------------
+* ver 1.0 : 6 Feb 2019
+* - first release
+*
+*/
+#include &ltiostream&gt
+#include &ltfstream&gt
+#include &ltstring&gt
+#include &ltvector&gt
+
+void showRequirements_1_4(std::vector&ltstd::string&gt regexfile);
+void showRequirements_5_6();
+void showRequirements_7();
+
+//	&lt----  Display the requirement 1-4 demonstrations on the console  ----&gt
+void showRequirements_1_4(std::vector&ltstd::string&gt regexfile)
+{
+	std::cout &lt&lt "\n ======================================" &lt&lt "\n Requirement 1 demonstration: \n" &lt&lt "Using Visual Studio 2017 to finish this project." &lt&lt "\n ======================================" &lt&lt std::endl;
+	std::cout &lt&lt "\n Requirement 2 demonstration: \n" &lt&lt "This project uses standard streams libraries for all I/O and operators new and delete for memory management." &lt&lt "\n ======================================" &lt&lt std::endl;
+	std::cout &lt&lt "\n Requirement 3 demonstration: \n" &lt&lt "This project includes 5 packages:convertHtml, DirExplorer, Display, Utilities, Test. \n";
+	std::cout &lt&lt "	-- convertHtml: convertHtml.h, convertHtmlTest.cpp" &lt&lt std::endl;
+	std::cout &lt&lt "	-- DirExplorer: DirExplorer.h, DirExplorerTest.cpp, FileSystem.cpp" &lt&lt std::endl;
+	std::cout &lt&lt "	-- Display: Display.h, DisplayTest.cpp" &lt&lt std::endl;
+	std::cout &lt&lt "	-- Utilities: codeUtilities.h, StringUtilitis.cpp" &lt&lt std::endl;
+	std::cout &lt&lt "	-- Test: FileSystem.h, process.h, requirements.h, execution.cpp, FileSystem.cpp";
+	std::cout &lt&lt "\n ======================================" &lt&lt std::endl;
+	std::cout &lt&lt "\n Requirement 4 demonstration: \n" &lt&lt "Accept, from the command line, a path that specifies where file(s) to be analyzed are found, and a regular expression used to select filenames to process." &lt&lt std::endl;
+	std::cout &lt&lt "	-- Command line: " &lt&lt "..\\Test\\ [HELLOWORLD2019]" &lt&lt std::endl;
+	std::cout &lt&lt "			 ..\\Test\\ [a-tA-Z]*\\.[h]" &lt&lt std::endl;
+	std::cout &lt&lt "	-- Files selected by regexes:" &lt&lt std::endl;
+	for (auto f : regexfile) {
+		std::cout &lt&lt "		++ " &lt&lt f &lt&lt std::endl;
+	}
+}
+//	&lt----  Display the requirement 5, 6 demonstrations on the console  ----&gt
+void showRequirements_5_6()
+{
+	std::cout &lt&lt "\n ======================================" &lt&lt std::endl;
+	std::cout &lt&lt "\n Requirement 5 and requirement 6 demonstration: \n";
+	std::cout &lt&lt "\n The program will automatically run twice. First time will not find any file which meets the regexes, and second time will find some files which meets the regex conditions. \n";
+}
+
+//	&lt----  Display the requirement 7 demonstration on the console  ----&gt
+void showRequirements_7()
+{
+	std::cout &lt&lt "\n ======================================" &lt&lt std::endl;
+	std::cout &lt&lt "\n Requirement 7 demonstration: \n" &lt&lt "Display, in a child process using the default browser, each converted file, waiting for the child to exit before displaying the next file. \n";
+}</pre>  </body>
+</html>
+
