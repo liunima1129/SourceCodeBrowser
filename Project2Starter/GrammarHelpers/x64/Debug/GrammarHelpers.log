@@ -1,0 +1,8 @@
+﻿  Logger.cpp
+  Semi.cpp
+  Toker.cpp
+d:\project2starter\tokenizer\toker.cpp(438): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+  Utilities.cpp
+  GrammarHelpers.cpp
+  Generating Code...
+  GrammarHelpers.vcxproj -> D:\Project2Starter\x64\Debug\GrammarHelpers.lib

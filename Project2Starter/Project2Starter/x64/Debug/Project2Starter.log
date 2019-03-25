@@ -1,0 +1,16 @@
+﻿  AbstrSynTree.cpp
+  dependency.cpp
+  FileSystem.cpp
+  GrammarHelpers.cpp
+  Logger.cpp
+  ScopeStack.cpp
+  Semi.cpp
+  Toker.cpp
+d:\project2starter\tokenizer\toker.cpp(438): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+  Utilities.cpp
+  ActionsAndRules.cpp
+  ConfigureParser.cpp
+  Executive.cpp
+  Parser.cpp
+  Generating Code...
+  Project2Starter.vcxproj -> D:\Project2Starter\x64\Debug\Project2Starter.exe

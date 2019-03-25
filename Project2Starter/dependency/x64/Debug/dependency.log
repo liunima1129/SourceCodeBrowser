@@ -1,0 +1,11 @@
+﻿  AbstrSynTree.cpp
+  countTable.cpp
+  display.cpp
+  FileSystem.cpp
+  ActionsAndRules.cpp
+  ConfigureParser.cpp
+  Parser.cpp
+  dependenciesTest.cpp
+  dependency.cpp
+  Generating Code...
+  dependency.vcxproj -> D:\Project2Starter\x64\Debug\dependency.lib

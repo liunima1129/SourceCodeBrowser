@@ -1,0 +1,15 @@
+﻿  AbstrSynTree.cpp
+  dependency.cpp
+  FileSystem.cpp
+  GrammarHelpers.cpp
+  Logger.cpp
+  ScopeStack.cpp
+  Semi.cpp
+  Toker.cpp
+  Utilities.cpp
+  ActionsAndRules.cpp
+  ConfigureParser.cpp
+  Executive.cpp
+  Parser.cpp
+  Generating Code...
+  Project2Starter.vcxproj -> D:\ProgramData\Project2Starter\Debug\Project2Starter.exe
