@@ -1,0 +1,5 @@
+﻿  Toker.cpp
+d:\project2starter\tokenizer\toker.cpp(438): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+  Semi.cpp
+  Generating Code...
+  SemiExpression.vcxproj -> D:\Project2Starter\x64\Debug\SemiExpression.lib
